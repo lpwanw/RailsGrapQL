@@ -98,6 +98,12 @@ GEM
     erubi (1.13.0)
     et-orbi (1.2.11)
       tzinfo
+    factory_bot (6.5.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.4.3)
+      factory_bot (~> 6.4)
+      railties (>= 5.0.0)
+    ffaker (2.23.0)
     fugit (1.11.1)
       et-orbi (~> 1, >= 1.2.11)
       raabro (~> 1.4)
@@ -247,6 +253,9 @@ GEM
       rubocop-rails
     ruby-progressbar (1.13.0)
     securerandom (0.3.1)
+    shoulda-context (2.0.0)
+    shoulda-matchers (6.4.0)
+      activesupport (>= 5.2.0)
     solid_cable (3.0.2)
       actioncable (>= 7.2)
       activejob (>= 7.2)
@@ -319,10 +328,14 @@ DEPENDENCIES
   bootsnap
   brakeman
   debug
+  factory_bot_rails
+  ffaker
   kamal (>= 2.0.0.rc2)
   puma (>= 5.0)
   rails (~> 8.0.0.beta1)
   rubocop-rails-omakase
+  shoulda-context
+  shoulda-matchers
   solid_cable
   solid_cache
   solid_queue
