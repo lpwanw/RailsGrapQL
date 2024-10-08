@@ -6,6 +6,8 @@ module Types
     field :email_address, String, null: false
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
-    field :posts, [ Types::PostType ]
+    field :posts, [ PostType ]
+    field :comments, [ CommentType ]
+    field :commented_posts, [ PostType ]
   end
 end

@@ -22,5 +22,6 @@ module Types
     # They will be entry points for queries on your schema.
 
     field :post, resolver: Resolvers::PostResolver
+    field :comment, resolver: Resolvers::CommentResolver
   end
 end

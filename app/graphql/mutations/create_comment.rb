@@ -1,24 +1,24 @@
 # frozen_string_literal: true
 
 module Mutations
-  class CreatePost < BaseMutation
-    field :post, Types::PostType
+  class CreateComment < BaseMutation
+    field :comment, Types::CommentType
 
     argument :content, String, required: true
-    argument :visibility, String
+    argument :post_id, ID, required: true
 
-    def resolve(content:, visibility: "draft")
+    def resolve(content:, post_id:)
       user = context[:current_user]
 
-      post = Post.new(user:, content:, visibility:)
-      if post.save
+      comment = user.comments.new(post_id:, content:)
+      if comment.save
         {
-          post:,
+          comment:,
           errors: []
         }
       else
         {
-          errors: post.errors.full_messages
+          errors: comment.errors.full_messages
         }
       end
     end
@@ -30,5 +30,9 @@ module Mutations
         true
       end
     end
+
+    private
+
+    field :post, Types::PostType
   end
 end
