@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class RailsGrapQlSchema < GraphQL::Schema
+class RailsGraphQlSchema < GraphQL::Schema
   mutation(Types::MutationType)
   query(Types::QueryType)
 
