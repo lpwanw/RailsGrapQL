@@ -9,7 +9,7 @@ module Mutations
     argument :visibility, String
 
     def resolve(content:, visibility: "draft")
-      user = User.first
+      user = context[:current_user]
 
       post = Post.new(user:, content:, visibility:)
       if post.save
@@ -19,10 +19,13 @@ module Mutations
         }
       else
         {
-          post: nil,
           errors: post.errors.full_messages
         }
       end
+    end
+
+    def self.authorized?(obj, ctx)
+      super && ctx[:current_user].is_a?(User)
     end
   end
 end
