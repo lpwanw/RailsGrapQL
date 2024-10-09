@@ -5,12 +5,12 @@ module Mutations
     field :comment, Types::CommentType
 
     argument :content, String, required: true
-    argument :post_id, ID, required: true
+    argument :post_id, ID, loads: Types::PostType
 
-    def resolve(content:, post_id:)
+    def resolve(content:, post:)
       user = context[:current_user]
 
-      comment = user.comments.new(post_id:, content:)
+      comment = user.comments.new(post:, content:)
       if comment.save
         {
           comment:,

@@ -2,7 +2,6 @@
 
 module Types
   class CommentType < Types::BaseObject
-    field :id, ID, null: false
     field :user_id, Integer, null: false
     field :post_id, Integer, null: false
     field :content, String, null: false

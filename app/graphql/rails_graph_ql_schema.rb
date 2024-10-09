@@ -18,9 +18,16 @@ class RailsGraphQlSchema < GraphQL::Schema
 
   # Union and Interface Resolution
   def self.resolve_type(abstract_type, obj, ctx)
-    # TODO: Implement this method
-    # to return the correct GraphQL object type for `obj`
-    raise(GraphQL::RequiredImplementationMissingError)
+    case obj
+    when Post
+      Types::PostType
+    when Comment
+      Types::CommentType
+    when User
+      Types::UserType
+    else
+      raise("Unexpected object: #{obj}")
+    end
   end
 
   # Limit the size of incoming queries:
